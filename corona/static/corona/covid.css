@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .container{
@@ -17,7 +18,7 @@ left: 50%;
 transform: translate(-50%,-50%);
 color: white;
 font-size: 3rem;
-font-family: cursive;
+font-family: 'Times New Roman', Times, serif;
 }
 
 nav{
@@ -71,7 +72,6 @@ ul li a{
 .item p{
     text-align: center;
     color:green;
-    font-family: cursive;
     font-size: 1.2rem;
     margin-top: 2rem;
 }
@@ -90,7 +90,6 @@ ul li a{
     padding: 7px 20px;
     border-radius: 20px;
     outline: 0;
-    font-family: cursive;
     width: 100%;
     border: none;
     font-size: 1.5rem;
@@ -113,7 +112,6 @@ ul li a{
     width: 15%;
 }
 table th{
-    font-family: cursive;
     color: black;
     font-size: 1.2rem;
     font-weight: 100;
@@ -146,7 +144,6 @@ table td{
     margin-top: 1.5rem;
 }
 .newsitem h3,p{
-    font-family: cursive;
     text-align: center;
 }
 .newsitem p{
@@ -173,6 +170,9 @@ table td{
 
 
 @media only screen and (max-width: 600px) {
+    *{
+        font-family: 'Times New Roman', Times, serif;
+    }
     ul{
         width: 100%;
         display: none;
@@ -239,7 +239,6 @@ table td{
         padding: 7px 20px;
         border-radius: 20px;
         outline: 0;
-        font-family: cursive;
         width: 100%;
         border: none;
         font-size: 1.5rem;
@@ -260,7 +259,6 @@ table td{
         border-radius: 1rem;
     }
     .newsitem h3,p{
-        font-family: cursive;
         text-align: center;
     }
     .newsitem p{
