@@ -1,0 +1,56 @@
+{% extends 'corona/base.html'%}
+
+{% block content %}
+
+<div class="globalcontainer">
+    <div class="item"><p>{{ globalRecord.NewConfirmed}}</p><p class="redinfo">NewConfirmed</p><div class="insideHi"></div></div>
+    <div class="item"><p>{{ globalRecord.TotalConfirmed}}</p><p class="redinfo">TotalConfirmed</p><div class="insideHi"></div></div>
+    <div class="item"><p>{{ globalRecord.TotalDeaths}}</p><p class="redinfo">TotalDeaths</p><div class="insideHi"></div></div>
+    <div class="item"><p>{{ globalRecord.NewRecovered}}</p><p class="redinfo">NewRecovered</p><div class="insideHi"></div></div>
+    <div class="item"><p>{{ globalRecord.TotalRecovered}}</p><p class="redinfo">TotalRecovered</p><div class="insideHi"></div></div>
+</div>
+
+<div class="chartShow">
+    <canvas id="myChart" width="400" height="400"></canvas>
+</div>
+
+{% block javascript %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+<script>
+     var ctx = document.getElementById('myChart');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['New Confirmed','TotalConfirmed','Total Deaths','Total Recovered'],
+        datasets: [{
+            label: 'Covid-19 effect',
+            data: [{{globalRecord.NewConfirmed}},{{globalRecord.TotalConfirmed}},{{globalRecord.TotalDeaths}},{{globalRecord.TotalRecovered}}],
+            backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+            ],
+            borderWidth: 3
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+{% endblock javascript %}
+{% endblock content %}

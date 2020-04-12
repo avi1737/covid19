@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country-wise data</title>
+    <link rel="stylesheet" href="{% static 'corona/covid.css' %}">
+</head>
+<body style="background-color: rgb(255, 255, 255)">
+
+    <div class="searchBy">
+        <input type="search" name="countrysearch" id="countrysearch" placeholder="Country name" style="background-color:purple;color: white;">
+        <a href="{% url 'covid-home' %}" style="color: white;">Back</a>
+    </div>
+    <div id="content">
+        
+     <table>
+         <thead>
+             <th class="country">Country</th>
+             <th class="concd">Country Code</th>
+             <th class="ttd">Deaths</th>
+             <th class="ttc">Confirmend</th>
+             <th class="ttr">Recovered</th>
+             <th class="date">Date</th>
+         </thead>
+         <tbody id="tbdy">
+             
+         </tbody>
+     </table>
+    </div>
+
+    <div class="chartShow">
+        <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+    
+
+
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+{% block javascript %}
+ <script>
+
+    $("#countrysearch").change(function () {
+        $myval = $(this).val();
+        $(".chartShow").css('display','block');
+    $.ajax({
+        url: 'https://api.covid19api.com/summary',
+        type: "GET",
+        dataType: 'json',
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            mydata = data['Countries']
+            for ( var i = 0; i < mydata.length; i++ ) {
+                if(mydata[i].Country.startsWith($myval)){
+                $html="";
+                $html += "<tr>";
+                $html += "<td>"+mydata[i].Country+"</td>";
+                $html += "<td>"+mydata[i].CountryCode+"</td>";
+                $html += "<td>"+mydata[i].TotalDeaths+"</td>";
+                $html += "<td>"+mydata[i].TotalConfirmed+"</td>";
+                $html += "<td>"+mydata[i].TotalRecovered+"</td>";
+                $html += "<td>"+mydata[i].Date.slice(0,10)+"</td>";
+                $html += "</tr>";
+                $('#tbdy').append($html);
+                }
+            }
+
+            for(var j=0;j<mydata.length;j++){
+                if($myval == mydata[j].Country){
+                    $Deaths = mydata[j].TotalDeaths;
+                    $Recovered = mydata[j].TotalRecovered;
+                    $Confirmed = mydata[j].TotalConfirmed;
+                }
+            }
+
+            var ctx = document.getElementById('myChart');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Deaths', 'Recovered', 'Confirmed'],
+        datasets: [{
+            label: 'Country Wise Data',
+            data: [$Deaths, $Recovered, $Confirmed],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+        },
+    });
+    });
+
+
+
+
+    //chart
+
+
+ </script>
+
+ {% endblock javascript %}
+</body>
+</html>

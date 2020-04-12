@@ -1,0 +1,13 @@
+{% extends 'corona/base.html' %}
+
+{% block content %}
+<div class="newsblock">
+{% for headline in headline %}
+<div class="newsitem">
+<h3>{{ headline.title}}</h3>
+<p>{{ headline.content|slice:200 }}<a href="{{ headline.url}}" style="cursor: pointer;">Read Full News</a></p>
+<img src="{{ headline.urlToImage }}" alt="" width="100%" height="100%">
+</div>
+{% endfor %}
+</div>
+{% endblock content %}

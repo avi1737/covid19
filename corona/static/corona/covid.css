@@ -1,0 +1,280 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 100%;
+    height: 400px;
+    background-color: #4d05e8;
+    position: relative;
+}
+#covidinfo{
+position:absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+color: white;
+font-size: 3rem;
+font-family: cursive;
+}
+
+nav{
+    width: 100%;
+    height:auto;
+    padding: 10px 20px;
+    background-color: white;
+}
+ul{
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: space-evenly;
+}
+ul li a{
+    text-decoration: none;
+    color: rgb(85, 85, 85);
+    font-family: cursive;
+    font-size: 1.1rem;
+}
+#navBar{
+    display: none;
+}
+#navCross{
+    display: none;
+}
+
+.contentaligner{
+    width: 100%;
+    padding: 50px 130px;
+    height: auto;
+}
+.globalcontainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+.item{
+    width: 150px;
+    height: 150px;
+    background-color: rgba(219, 219, 219, 0.096);
+    border-radius: 12px;
+    webkit-box-shadow: 0 10px 6px -6px #777;
+       -moz-box-shadow: 0 10px 6px -6px #777;
+            box-shadow: 0 10px 6px -6px #777;
+
+}
+
+.item p{
+    text-align: center;
+    color:green;
+    font-family: cursive;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
+.searchBy{
+    width: 700px;
+    height:auto;
+    padding: 15px 40px;
+    margin: 50px auto;
+    color: white;
+}
+.searchBy p{
+    color: white;
+    margin-top: 8px 10px;
+}
+#countrysearch{
+    padding: 7px 20px;
+    border-radius: 20px;
+    outline: 0;
+    font-family: cursive;
+    width: 100%;
+    border: none;
+    font-size: 1.5rem;
+}
+#content{
+    margin:0px auto;
+    width: 1000px;
+    padding: 1.5rem 2rem;
+    background-color: white;
+    border-radius: 12px;
+}
+
+.country{
+    width: 25%;
+}
+.ttd,.ttr,.date,.ttc{
+    width: 10%;
+}
+.concd{
+    width: 15%;
+}
+table th{
+    font-family: cursive;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 100;
+}
+table td{
+    text-align: center;
+    font-family: cursive;
+    font-size: 1.2rem;
+}
+#tbdy tr{
+    background-color: whitesmoke;
+    padding: 8px 7px;
+}
+.newsblock{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.newsblock img{
+    width: 400px;
+    height: 350px;
+}
+.newsitem{
+    background-color: whitesmoke;
+    padding: 1.4rem;
+    border-radius: 1rem;
+    width: 450px;
+    height: auto;
+    margin-top: 1.5rem;
+}
+.newsitem h3,p{
+    font-family: cursive;
+    text-align: center;
+}
+.newsitem p{
+    color: darkgray;
+}
+
+.chartShow{
+    background-color: black;
+    width: 80%;
+    height: auto;
+    margin: 30px auto;
+    border-radius: 20px;
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+    ul{
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        list-style: none;
+        justify-content: center;
+        height: 200px;
+    }
+    ul li {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    #navBar{
+        display: inline-block;
+    }
+    #navCross{
+        display: none;
+        margin-top: 20px;
+    }
+    .globalcontainer{
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .item{
+        width: 250px;
+        height: 170px;
+        margin: 20px auto;
+    }
+    .insideHi{
+        width: 100%;
+        height: 35%;
+        background-color: rgba(238, 238, 238, 0.397);
+        }
+    #content{
+        width: 100%;
+        padding: 3px 2px;
+        background-color: white;
+        border-radius: 10px;
+
+    }
+    #content table{
+        width: 100%;
+    }
+    #content table th{
+        font-size: 0.8rem;
+    }
+    #content table td{
+        font-size: 0.8rem;
+    }
+
+    .searchBy{
+        width: 100%;
+        height:auto;
+        padding: 10px 1.rem;
+        margin: 30px auto;
+        color: black;
+    }
+    .searchBy p{
+        color: white;
+        margin-top: 10px 10px;
+    }
+    #countrysearch{
+        padding: 7px 20px;
+        border-radius: 20px;
+        outline: 0;
+        font-family: cursive;
+        width: 100%;
+        border: none;
+        font-size: 1.5rem;
+    }
+    .newsblock{
+        display: flex;
+        flex-direction: column;
+        justify-content:space-evenly;
+    }
+    .newsblock img{
+        width: 80%;
+        height: 250px;
+    }
+    .newsitem{
+        background-color: whitesmoke;
+        padding: 1rem;
+        width: 100%;
+        border-radius: 1rem;
+    }
+    .newsitem h3,p{
+        font-family: cursive;
+        text-align: center;
+    }
+    .newsitem p{
+        color: darkgray;
+    }
+    .contentaligner{
+        width: 100%;
+        padding: 20px 20px;
+        height: auto;
+    }
+    .chartShow{
+        width: 80%;
+        height: auto;
+        margin: 30px auto;
+        background-color: black;
+    }
+}

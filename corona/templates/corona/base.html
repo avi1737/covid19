@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'corona/covid.css' %}">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container">
+      <nav>
+          <ul id="ulList">
+              <li><a href="{% url 'covid-home' %}">Home</a></li>
+              <li><a href="{% url 'covid-news' %}">News</a>
+              <li><a href="{% url 'country-wise' %}">Counrty Wise</a></li>
+          </ul>
+          <i class="fa fa-bars fa-2x"  id="navBar"></i>
+          <i class="fa fa-times-circle fa-2x"  id="navCross"></i>
+      </nav>
+      <h1 id="covidinfo">Covid-19 Latest Information</h1>
+    </div>
+
+    <div class="contentaligner">
+    {% block content %}
+      
+
+    {% endblock content %}
+    </div>
+
+    <script>
+        var navBar = document.getElementById("navBar");
+        var navList = document.getElementById("ulList");
+        var cdinfo = document.getElementById("covidinfo");
+        var navCross = document.getElementById("navCross");
+        navBar.addEventListener("click",()=>{
+            navList.style.display="block";
+            cdinfo.style.display="none";
+            navCross.style.display="block";
+            navBar.style.display="none";
+
+        });
+
+        navCross.addEventListener("click",()=>{
+            navList.style.display="none";
+            cdinfo.style.display="block";
+            navCross.style.display="none";
+            navBar.style.display="block";
+
+        });
+    </script>
+   
+</body>
+</html>
